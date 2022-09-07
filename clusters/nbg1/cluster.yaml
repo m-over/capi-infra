@@ -1,7 +1,7 @@
 apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
 kind: KubeadmConfigTemplate
 metadata:
-  name: nbg1-md-0
+  name: tooling-md-0
   namespace: default
 spec:
   template:
@@ -130,7 +130,7 @@ spec:
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: nbg1
+  name: tooling
   namespace: default
 spec:
   clusterNetwork:
@@ -140,49 +140,49 @@ spec:
   controlPlaneRef:
     apiVersion: controlplane.cluster.x-k8s.io/v1beta1
     kind: KubeadmControlPlane
-    name: nbg1-control-plane
+    name: tooling-control-plane
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: HetznerCluster
-    name: nbg1
+    name: tooling
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
   labels:
-    nodepool: nbg1-md-0
-  name: nbg1-md-0
+    nodepool: tooling-md-0
+  name: tooling-md-0
   namespace: default
 spec:
-  clusterName: nbg1
+  clusterName: tooling
   replicas: 5
   selector:
     matchLabels: null
   template:
     metadata:
       labels:
-        nodepool: nbg1-md-0
+        nodepool: tooling-md-0
     spec:
       bootstrap:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
           kind: KubeadmConfigTemplate
-          name: nbg1-md-0
-      clusterName: nbg1
+          name: tooling-md-0
+      clusterName: tooling
       failureDomain: nbg1
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
-        name: nbg1-md-0
+        name: tooling-md-0
       version: v1.24.1
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineHealthCheck
 metadata:
-  name: nbg1-control-plane-unhealthy-5m
+  name: tooling-control-plane-unhealthy-5m
   namespace: default
 spec:
-  clusterName: nbg1
+  clusterName: tooling
   maxUnhealthy: 100%
   nodeStartupTimeout: 20m
   selector:
@@ -199,15 +199,15 @@ spec:
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineHealthCheck
 metadata:
-  name: nbg1-md-0-unhealthy-5m
+  name: tooling-md-0-unhealthy-5m
   namespace: default
 spec:
-  clusterName: nbg1
+  clusterName: tooling
   maxUnhealthy: 100%
   nodeStartupTimeout: 20m
   selector:
     matchLabels:
-      nodepool: nbg1-md-0
+      nodepool: tooling-md-0
   unhealthyConditions:
   - status: Unknown
     timeout: 300s
@@ -219,7 +219,7 @@ spec:
 apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: KubeadmControlPlane
 metadata:
-  name: nbg1-control-plane
+  name: tooling-control-plane
   namespace: default
 spec:
   kubeadmConfigSpec:
@@ -452,7 +452,7 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: nbg1-control-plane
+  name: tooling-control-plane
   namespace: default
 spec:
   template:
@@ -464,7 +464,7 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: nbg1-md-0
+  name: tooling-md-0
   namespace: default
 spec:
   template:
@@ -476,7 +476,7 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HetznerCluster
 metadata:
-  name: nbg1
+  name: tooling
   namespace: default
 spec:
   controlPlaneEndpoint:

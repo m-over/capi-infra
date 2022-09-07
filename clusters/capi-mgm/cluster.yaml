@@ -95,7 +95,7 @@ spec:
       preKubeadmCommands:
       - export CRUN=1.4.5
       - export CONTAINERD=1.6.5
-      - export KUBERNETES_VERSION=$(echo v1.24.1 | sed 's/^v//')
+      - export KUBERNETES_VERSION=$(echo v1.25.0 | sed 's/^v//')
       - localectl set-locale LANG=en_US.UTF-8
       - localectl set-locale LANGUAGE=en_US.UTF-8
       - apt-get update -y
@@ -155,7 +155,7 @@ metadata:
   namespace: default
 spec:
   clusterName: capi-mgm
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels: null
   template:
@@ -174,7 +174,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: capi-mgm-md-0
-      version: v1.24.1
+      version: v1.25.0
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineHealthCheck
@@ -412,7 +412,7 @@ spec:
     preKubeadmCommands:
     - export CRUN=1.4.5
     - export CONTAINERD=1.6.5
-    - export KUBERNETES_VERSION=$(echo v1.24.1 | sed 's/^v//')
+    - export KUBERNETES_VERSION=$(echo v1.25.0 | sed 's/^v//')
     - localectl set-locale LANG=en_US.UTF-8
     - localectl set-locale LANGUAGE=en_US.UTF-8
     - apt-get update -y
@@ -447,7 +447,7 @@ spec:
       kind: HCloudMachineTemplate
       name: capi-mgm-control-plane
   replicas: 1
-  version: v1.24.1
+  version: v1.25.0
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
