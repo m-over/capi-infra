@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clusters
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: git@github.com:m-over/capi-infra.git
+      targetRevision: HEAD
+      directories:
+      - path: clusters/*
+  template:
+    metadata:
+      name: '{{path[1]}}'
+    spec:
+      project: default
+      source:
+        repoURL: git@github.com:m-over/capi-infra.git
+        targetRevision: HEAD
+        path: clusters/*
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: guestbook
