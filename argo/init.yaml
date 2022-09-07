@@ -10,8 +10,8 @@ spec:
     namespace: ''
     server: 'https://kubernetes.default.svc'
   source:
-    path: /argo-config
-    repoURL: 'git@github.com:m-over/capi-infra.git'
+    path: /argo
+    repoURL: 'https://github.com/m-over/capi-infra.git'
     targetRevision: HEAD
   project: default
   syncPolicy:

@@ -7,19 +7,19 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: git@github.com:m-over/capi-infra.git
+      repoURL: https://github.com/m-over/capi-infra.git
       targetRevision: HEAD
       directories:
       - path: clusters/*
   template:
     metadata:
-      name: '{{path[1]}}'
+      name: 'capi-{{path[1]}}'
     spec:
       project: default
       source:
-        repoURL: git@github.com:m-over/capi-infra.git
+        repoURL: https://github.com/m-over/capi-infra.git
         targetRevision: HEAD
-        path: clusters/*
+        path: clusters/{{path[1]}}
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: guestbook
