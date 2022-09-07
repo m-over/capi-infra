@@ -155,7 +155,7 @@ metadata:
   namespace: default
 spec:
   clusterName: capi-mgm
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels: null
   template:
