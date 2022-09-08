@@ -18,7 +18,8 @@ spec:
       insecureSkipVerify: true
   selector:
     matchLabels:
+    labels:
       app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: prom-operator-app
       app.kubernetes.io/name: prometheus-operator
-      app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 0.59.0
