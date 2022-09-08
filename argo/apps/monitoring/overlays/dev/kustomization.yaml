@@ -6,4 +6,4 @@ namespace: prom-operator
 
 resources:
 - ns.yaml
-- ../../base
+- ../../base/kustomization.yaml
