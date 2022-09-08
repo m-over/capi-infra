@@ -4,3 +4,4 @@ kind: Kustomization
 
 resources:
 - linkerd-crds.yaml
+- linkerd.yaml
