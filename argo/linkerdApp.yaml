@@ -2,22 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prom-operator
+  name: linkerd
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/m-over/capi-infra.git'
-    path: argo/apps/monitoring/overlays/dev
+    path: argo/apps/linkerd/overlays/dev
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-  syncPolicy:
-    syncOptions:
-      - Replace=true
-
-
-
-
-
-
