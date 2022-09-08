@@ -2,15 +2,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: clusters
+  name: capi-clusters
   namespace: argocd
 spec:
   generators:
   - git:
       repoURL: https://github.com/m-over/capi-infra.git
-      targetRevision: HEAD
+      revision: HEAD
       directories:
       - path: clusters/*
+      - path: clusters/bootstrap
+        exclude: true
   template:
     metadata:
       name: 'capi-{{path[1]}}'
@@ -23,3 +25,14 @@ spec:
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: guestbook
+      ignoreDifferences:
+      - group: ""
+        kind: Secret
+        name:  linkerd-proxy-injector-k8s-tls
+        jsonPointers:
+        - /data/tls.crt
+        - /data/tls.key
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true

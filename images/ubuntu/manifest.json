@@ -1,0 +1,27 @@
+{
+  "builds": [
+    {
+      "name": "hcloud",
+      "builder_type": "hcloud",
+      "build_time": 1662553621,
+      "files": null,
+      "artifact_id": "81844744",
+      "packer_run_uuid": "3ac28504-9bd1-e038-002d-6209de74a50d",
+      "custom_data": {
+        "snapshot_label": "1.24.1-ubuntu-20.04-containerd-2022-09-07-1224"
+      }
+    },
+    {
+      "name": "hcloud",
+      "builder_type": "hcloud",
+      "build_time": 1662554944,
+      "files": null,
+      "artifact_id": "81844799",
+      "packer_run_uuid": "3deb3894-a13e-7495-ad2a-4232fe434c85",
+      "custom_data": {
+        "snapshot_label": "1.24.1-ubuntu-20.04-containerd-2022-09-07-1246"
+      }
+    }
+  ],
+  "last_run_uuid": "3deb3894-a13e-7495-ad2a-4232fe434c85"
+}
